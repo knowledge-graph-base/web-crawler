@@ -71,39 +71,48 @@ class BFSCrawler:
         return self.graph
 
     def visit_url(self, url):
-        try:
-            print(f"Visiting: {url}")  # Console feedback
-            self.driver.get(url)
-            self.driver.implicitly_wait(10)
-            time.sleep(1)  # increase wait time to 2 seconds            
-
-            # Take screenshot and continue as before...
-            filename_part = clean_filename(url)[:50]
-            screenshot_name = f"{timestamp_str()}_{filename_part}.png"
-            screenshot_path = os.path.join(SCREENSHOT_DIR, screenshot_name)
-            self.driver.save_screenshot(screenshot_path)
-            
-            # Log info to file
-            with open(LOG_FILE, "a", encoding="utf-8") as f:
-                f.write(f"\n## Page: {url}\n")
-                f.write(f"**Title**: {self.driver.title}\n")
-                f.write(f"**Time**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-                f.write(f"**Screenshot**: `{screenshot_name}`\n")
+        max_retries = 3
+        current_try = 0
+        
+        while current_try < max_retries:
+            try:
+                print(f"Visiting: {url} (Attempt {current_try + 1}/{max_retries})")
+                self.driver.get(url)
+                # Reduce implicit wait time
+                self.driver.implicitly_wait(5)
+                time.sleep(2)  # Small pause after page load
                 
-            return True
-            
-        except TimeoutException:
-            print(f"[Timeout] Unable to load {url}")
-            with open(LOG_FILE, "a", encoding="utf-8") as f:
-                f.write(f"\n## ❌ Failed: {url}\n")
-                f.write("**Error**: Timeout while loading page\n\n---\n")
-            return False
-        except Exception as e:
-            print(f"[Error] Failed to load {url}: {str(e)}")
-            with open(LOG_FILE, "a", encoding="utf-8") as f:
-                f.write(f"\n## ❌ Failed: {url}\n")
-                f.write(f"**Error**: {str(e)}\n\n---\n")
-            return False
+                # Take screenshot and continue as before...
+                filename_part = clean_filename(url)[:50]
+                screenshot_name = f"{timestamp_str()}_{filename_part}.png"
+                screenshot_path = os.path.join(SCREENSHOT_DIR, screenshot_name)
+                self.driver.save_screenshot(screenshot_path)
+                
+                # Log info to file
+                with open(LOG_FILE, "a", encoding="utf-8") as f:
+                    f.write(f"\n## Page: {url}\n")
+                    f.write(f"**Title**: {self.driver.title}\n")
+                    f.write(f"**Time**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+                    f.write(f"**Screenshot**: `{screenshot_name}`\n")
+                    
+                return True
+                
+            except TimeoutException:
+                current_try += 1
+                print(f"[Timeout] Attempt {current_try} failed for {url}")
+                if current_try == max_retries:
+                    with open(LOG_FILE, "a", encoding="utf-8") as f:
+                        f.write(f"\n## ❌ Failed: {url}\n")
+                        f.write(f"**Error**: Timeout after {max_retries} attempts\n\n---\n")
+                    return False
+                time.sleep(2)  # Wait before retrying
+                
+            except Exception as e:
+                print(f"[Error] Failed to load {url}: {str(e)}")
+                with open(LOG_FILE, "a", encoding="utf-8") as f:
+                    f.write(f"\n## ❌ Failed: {url}\n")
+                    f.write(f"**Error**: {str(e)}\n\n---\n")
+                return False
 
     def extract_links(self):
         """Extract all anchor hrefs from the current page."""
