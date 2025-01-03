@@ -17,13 +17,14 @@ def main():
     if len(sys.argv) > 1:
         start_url = sys.argv[1]
     else:
-        start_url = "https://news.ycombinator.com"
+        start_url = "https://quickbooks.intuit.com"
 
     # Setup Selenium for headless Chrome
     chrome_options = Options()
-    chrome_options.add_argument("--headless")  # run in headless mode
+    # chrome_options.add_argument("--headless")  # run in headless mode
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36")
 
     driver_service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=driver_service, options=chrome_options)

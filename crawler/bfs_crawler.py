@@ -74,36 +74,35 @@ class BFSCrawler:
         try:
             print(f"Visiting: {url}")  # Console feedback
             self.driver.get(url)
-            time.sleep(1)  # let the page load
+            self.driver.implicitly_wait(10)
+            time.sleep(1)  # increase wait time to 2 seconds            
 
-            # Take screenshot
-            filename_part = clean_filename(url)[:50]  # limit length
+            # Take screenshot and continue as before...
+            filename_part = clean_filename(url)[:50]
             screenshot_name = f"{timestamp_str()}_{filename_part}.png"
             screenshot_path = os.path.join(SCREENSHOT_DIR, screenshot_name)
             self.driver.save_screenshot(screenshot_path)
             
-            # Log info to file with more details
+            # Log info to file
             with open(LOG_FILE, "a", encoding="utf-8") as f:
                 f.write(f"\n## Page: {url}\n")
                 f.write(f"**Title**: {self.driver.title}\n")
                 f.write(f"**Time**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
                 f.write(f"**Screenshot**: `{screenshot_name}`\n")
                 
-                # Add page metadata
-                try:
-                    meta_desc = self.driver.find_element(By.CSS_SELECTOR, 'meta[name="description"]')
-                    f.write(f"**Description**: {meta_desc.get_attribute('content')}\n")
-                except NoSuchElementException:
-                    pass
-                
-                f.write("\n---\n")
-            
             return True
+            
         except TimeoutException:
             print(f"[Timeout] Unable to load {url}")
             with open(LOG_FILE, "a", encoding="utf-8") as f:
                 f.write(f"\n## ❌ Failed: {url}\n")
                 f.write("**Error**: Timeout while loading page\n\n---\n")
+            return False
+        except Exception as e:
+            print(f"[Error] Failed to load {url}: {str(e)}")
+            with open(LOG_FILE, "a", encoding="utf-8") as f:
+                f.write(f"\n## ❌ Failed: {url}\n")
+                f.write(f"**Error**: {str(e)}\n\n---\n")
             return False
 
     def extract_links(self):
