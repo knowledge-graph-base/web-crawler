@@ -1,120 +1,218 @@
 # crawler/bfs_crawler.py
 
-from collections import deque
-import os
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.remote.webdriver import WebDriver
 import time
-from datetime import datetime
+import os
+import json
 
-from selenium.common.exceptions import TimeoutException, NoSuchElementException
-from selenium.webdriver.common.by import By
+from base_crawler import BaseCrawler
+from visualization_handler import CrawlVisualizer
+from interaction_handler import InteractionHandler
 from utils import clean_filename, timestamp_str
+from dom_actions import DOMActions
+from selenium.webdriver.common.by import By
 
-
-SCREENSHOT_DIR = os.path.join(os.path.dirname(__file__), "..", "screenshots")
-LOG_FILE = os.path.join(os.path.dirname(__file__), "..", "crawl_log.md")
-
-class BFSCrawler:
-    def __init__(self, driver, max_depth=2, user_decision_callback=None):
-        """
-        :param driver: Selenium WebDriver instance
-        :param max_depth: Maximum depth for BFS
-        :param user_decision_callback: Function to handle ambiguous choices (simulating AI)
-        """
+class BFSCrawler(BaseCrawler):
+    def __init__(self, driver: WebDriver, max_depth: int = 2, user_decision_callback=None):
+        super().__init__(max_depth)
         self.driver = driver
-        self.max_depth = max_depth
-        self.user_decision_callback = user_decision_callback
-
-        # Graph to store visited pages
-        self.graph = {}  # { url: {"links": set([...]), "title": "..."} }
-        self.visited = set()
-
-    def crawl(self, start_url):
-        queue = deque([(start_url, 0)])
-        # Track which URLs were reached from where
-        self.referrers = {}  # {url: set(referrer_urls)}
+        self.screenshot_dir = os.path.join(os.path.dirname(__file__), "..", "screenshots")
+        self.log_file = os.path.join(os.path.dirname(__file__), "..", "crawl_log.md")
         
-        while queue:
-            url, depth = queue.popleft()
-            if url in self.visited:
-                # Log when we find a page through multiple paths
-                if url in self.graph:
-                    current_referrer = list(queue)[-1][0] if queue else start_url
-                    if url not in self.referrers:
-                        self.referrers[url] = set()
-                    self.referrers[url].add(current_referrer)
-                continue
-                
-            self.visited.add(url)
+        self.visualizer = CrawlVisualizer(self.log_file)
+        self.interaction_handler = InteractionHandler(driver, user_decision_callback) if user_decision_callback else None
+        self.dom_actions = DOMActions(driver)
 
-            # Go to the URL
-            success = self.visit_url(url)
-            if not success:
-                continue
+    def _process_page(self, url: str) -> tuple[bool, dict]:
+        """Process a single page during crawling."""
+        success = self._visit_url(url)
+        if not success:
+            return False, None
 
-            # Extract links
-            links = self.extract_links()
-            # Store to graph
-            page_title = self.driver.title
-            self.graph[url] = {
-                "links": set(links),
-                "title": page_title
+        # Get all interactive elements
+        interactive_elements = self.dom_actions.find_interactive_elements()
+        
+        # Store information about interactive elements
+        page_info = {
+            "links": set(self._extract_links()),
+            "title": self.driver.title,
+            "interactive_elements": {
+                element_type: [
+                    self.dom_actions.get_element_info(element)
+                    for element in elements
+                ]
+                for element_type, elements in interactive_elements.items()
             }
+        }
 
-            # BFS Enqueue
-            if depth < self.max_depth:
-                for link in links:
-                    if link not in self.visited:
-                        queue.append((link, depth + 1))
+        return True, page_info
 
-        # Generate visualization at the end of crawl
-        self.log_crawl_visualization()
-        return self.graph
+    def _notify_progress(self, url: str):
+        """Update visualization after processing a page."""
+        self.visualizer.update_progress(self.graph, self.referrers, url)
 
-    def visit_url(self, url):
+    def _visit_url(self, url: str) -> bool:
+        """Visit a URL with retry logic."""
         max_retries = 3
         current_try = 0
         
         while current_try < max_retries:
             try:
+                start_time = time.time()
                 print(f"Visiting: {url} (Attempt {current_try + 1}/{max_retries})")
-                self.driver.get(url)
-                # Reduce implicit wait time
-                self.driver.implicitly_wait(5)
-                time.sleep(2)  # Small pause after page load
                 
-                # Take screenshot and continue as before...
-                filename_part = clean_filename(url)[:50]
-                screenshot_name = f"{timestamp_str()}_{filename_part}.png"
-                screenshot_path = os.path.join(SCREENSHOT_DIR, screenshot_name)
-                self.driver.save_screenshot(screenshot_path)
+                # Load the page
+                if not self._load_page(url):
+                    raise TimeoutException("Page load failed")
                 
-                # Log info to file
-                with open(LOG_FILE, "a", encoding="utf-8") as f:
-                    f.write(f"\n## Page: {url}\n")
-                    f.write(f"**Title**: {self.driver.title}\n")
-                    f.write(f"**Time**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-                    f.write(f"**Screenshot**: `{screenshot_name}`\n")
+                # Take full page screenshot
+                screenshot_info = self._take_full_page_screenshot(url)
+                if not screenshot_info:
+                    raise Exception("Failed to take screenshot")
                     
+                # Calculate processing time
+                processing_time = time.time() - start_time
+                
+                # Log page visit
+                self.visualizer.log_page_visit(
+                    url=url,
+                    title=self.driver.title,
+                    screenshot_name=screenshot_info['name'],
+                    dimensions=screenshot_info['dimensions'],
+                    processing_time=processing_time
+                )
+                
                 return True
                 
             except TimeoutException:
                 current_try += 1
-                print(f"[Timeout] Attempt {current_try} failed for {url}")
                 if current_try == max_retries:
-                    with open(LOG_FILE, "a", encoding="utf-8") as f:
-                        f.write(f"\n## ❌ Failed: {url}\n")
-                        f.write(f"**Error**: Timeout after {max_retries} attempts\n\n---\n")
+                    self.visualizer.log_error(url, f"Timeout after {max_retries} attempts")
                     return False
-                time.sleep(2)  # Wait before retrying
+                time.sleep(2)
                 
             except Exception as e:
-                print(f"[Error] Failed to load {url}: {str(e)}")
-                with open(LOG_FILE, "a", encoding="utf-8") as f:
-                    f.write(f"\n## ❌ Failed: {url}\n")
-                    f.write(f"**Error**: {str(e)}\n\n---\n")
+                self.visualizer.log_error(url, str(e))
                 return False
 
-    def extract_links(self):
+    def _load_page(self, url: str) -> bool:
+        """Load the page and wait for it to be ready."""
+        try:
+            self.driver.get(url)
+            self.driver.implicitly_wait(5)
+            
+            # Wait for page load
+            time.sleep(2)  # Basic wait
+            
+            # Wait for dynamic content to load
+            self.driver.execute_script("return document.readyState") == "complete"
+            
+            return True
+        except Exception as e:
+            print(f"Error loading page: {str(e)}")
+            return False
+
+    def _take_full_page_screenshot(self, url: str) -> dict:
+        """
+        Take multiple screenshots of the page by scrolling through sections.
+        Creates a directory for each page visit and saves numbered screenshots.
+        Returns dict with screenshot info or None if failed.
+        """
+        try:
+            # Create directory for this page's screenshots
+            timestamp = timestamp_str()
+            page_dir_name = f"{timestamp}_{clean_filename(url)[:50]}"
+            screenshots_dir = os.path.join(self.screenshot_dir, page_dir_name)
+            os.makedirs(screenshots_dir, exist_ok=True)
+
+            # Get page dimensions
+            total_height = self.driver.execute_script(
+                "return Math.max(document.documentElement.scrollHeight, "
+                "document.body.scrollHeight);"
+            )
+            total_width = self.driver.execute_script(
+                "return Math.max(document.documentElement.scrollWidth, "
+                "document.body.scrollWidth);"
+            )
+
+            # Store original window size
+            original_size = self.driver.get_window_size()
+            viewport_height = original_size['height']
+            viewport_width = original_size['width']
+
+            # Calculate number of screenshots needed
+            num_sections = (total_height + viewport_height - 1) // viewport_height
+            screenshots = []
+
+            # Take screenshots of each section
+            for i in range(num_sections):
+                # Calculate scroll position
+                scroll_top = i * viewport_height
+                
+                # Scroll to position
+                self.driver.execute_script(f"window.scrollTo(0, {scroll_top});")
+                time.sleep(0.5)  # Wait for any dynamic content
+
+                # Take screenshot of current viewport
+                screenshot_name = f"section_{i + 1}.png"
+                screenshot_path = os.path.join(screenshots_dir, screenshot_name)
+                self.driver.save_screenshot(screenshot_path)
+                
+                screenshots.append({
+                    'name': screenshot_name,
+                    'path': screenshot_path,
+                    'scroll_position': scroll_top,
+                    'viewport_height': viewport_height
+                })
+
+                # Save viewport information
+                viewport_info = {
+                    'scroll_top': scroll_top,
+                    'viewport_height': viewport_height,
+                    'viewport_width': viewport_width,
+                    'section_number': i + 1
+                }
+                info_path = os.path.join(screenshots_dir, f"section_{i + 1}_info.json")
+                with open(info_path, 'w') as f:
+                    json.dump(viewport_info, f, indent=2)
+
+            # Save overall page information
+            page_info = {
+                'total_height': total_height,
+                'total_width': total_width,
+                'viewport_height': viewport_height,
+                'viewport_width': viewport_width,
+                'num_sections': num_sections,
+                'timestamp': timestamp,
+                'url': url,
+                'screenshots': screenshots
+            }
+            
+            with open(os.path.join(screenshots_dir, 'page_info.json'), 'w') as f:
+                json.dump(page_info, f, indent=2)
+
+            return {
+                'name': page_dir_name,
+                'path': screenshots_dir,
+                'dimensions': {
+                    'width': total_width,
+                    'height': total_height
+                },
+                'sections': num_sections,
+                'screenshots': screenshots
+            }
+
+        except Exception as e:
+            print(f"Screenshot failed: {str(e)}")
+            # Attempt to restore window size
+            try:
+                self.driver.set_window_size(original_size['width'], original_size['height'])
+            except:
+                pass
+            return None
+
+    def _extract_links(self) -> list:
         """Extract all anchor hrefs from the current page."""
         links = []
         a_tags = self.driver.find_elements(By.TAG_NAME, "a")
@@ -123,153 +221,3 @@ class BFSCrawler:
             if href and href.startswith("http"):
                 links.append(href)
         return links
-
-    def detect_interactive_elements(self):
-        """Detect forms, buttons and other interactive elements on the page."""
-        interactive_elements = {
-            'forms': self.driver.find_elements(By.TAG_NAME, 'form'),
-            'buttons': self.driver.find_elements(By.TAG_NAME, 'button'),
-            'inputs': self.driver.find_elements(By.TAG_NAME, 'input')
-        }
-        
-        return {k: v for k, v in interactive_elements.items() if v}
-
-    def handle_interactive_elements(self):
-        """Handle any interactive elements found on the page."""
-        if not self.user_decision_callback:
-            return
-
-        elements = self.detect_interactive_elements()
-        if not elements:
-            return
-
-        # Log found elements
-        with open(LOG_FILE, "a", encoding="utf-8") as f:
-            f.write("\n**Interactive Elements Found:**\n")
-            
-        for element_type, elements_list in elements.items():
-            message = f"Found {len(elements_list)} {element_type}. Interact with them?"
-            decision = self.user_decision_callback(message)
-            
-            if decision.lower() == 'yes':
-                # Log the decision
-                with open(LOG_FILE, "a", encoding="utf-8") as f:
-                    f.write(f"- Decided to interact with {element_type}\n")
-                
-                # Handle each element based on its type
-                for element in elements_list:
-                    try:
-                        if element_type == 'forms':
-                            self.handle_form(element)
-                        elif element_type in ('buttons', 'inputs'):
-                            self.handle_clickable(element)
-                    except Exception as e:
-                        print(f"Error handling {element_type}: {str(e)}")
-
-    def handle_form(self, form):
-        """Handle form interaction based on user input."""
-        inputs = form.find_elements(By.TAG_NAME, 'input')
-        for input_field in inputs:
-            input_type = input_field.get_attribute('type')
-            if input_type in ['text', 'email', 'password']:
-                placeholder = input_field.get_attribute('placeholder') or input_field.get_attribute('name')
-                value = self.user_decision_callback(f"Enter value for {placeholder}: ")
-                if value.lower() != 'skip':
-                    input_field.send_keys(value)
-
-    def handle_clickable(self, element):
-        """Handle clickable element interaction."""
-        element_text = element.text or element.get_attribute('value') or element.get_attribute('name')
-        decision = self.user_decision_callback(f"Click on '{element_text}'?")
-        if decision.lower() == 'yes':
-            try:
-                element.click()
-                time.sleep(1)  # Wait for any potential page changes
-            except Exception as e:
-                print(f"Failed to click element: {str(e)}")
-
-    def log_crawl_visualization(self):
-        """Generate a visual representation of the crawl in the log file."""
-        with open(LOG_FILE, "a", encoding="utf-8") as f:
-            # Add a summary section
-            f.write("\n## Crawl Summary\n")
-            f.write(f"- Total Pages Crawled: {len(self.graph)}\n")
-            f.write(f"- Max Depth: {self.max_depth}\n\n")
-
-            # Add a tree visualization
-            f.write("## Site Structure (Tree View)\n")
-            f.write("```\n")
-            self._write_tree_structure(f)
-            f.write("```\n\n")
-
-            # Add a Mermaid diagram
-            f.write("## Site Map (Mermaid Diagram)\n")
-            f.write("```mermaid\n")
-            f.write("graph TD\n")
-            self._write_mermaid_diagram(f)
-            f.write("```\n\n")
-
-            # Add information about pages with multiple entry points
-            if hasattr(self, 'referrers'):
-                multi_path_pages = {url: refs for url, refs in self.referrers.items() if len(refs) > 1}
-                if multi_path_pages:
-                    f.write("\n## Pages Accessible from Multiple Paths\n")
-                    for url, referrers in multi_path_pages.items():
-                        f.write(f"\n### {url}\n")
-                        f.write("Accessible from:\n")
-                        for ref in referrers:
-                            f.write(f"- {ref}\n")
-                    f.write("\n")
-
-    def _write_tree_structure(self, file):
-        """Write a tree-like structure of the crawled pages."""
-        def _short_url(url):
-            return url.replace('https://', '').replace('http://', '')[:50]
-
-        def _write_node(url, indent=0, visited=None):
-            if visited is None:
-                visited = set()
-            
-            # Check for cyclic references
-            if url in visited:
-                file.write(f"{'    ' * indent}└── {_short_url(url)} (cyclic)\n")
-                return
-            visited.add(url)
-
-            file.write(f"{'    ' * indent}└── {_short_url(url)}\n")
-            if url in self.graph:
-                for link in sorted(self.graph[url]['links'])[:5]:  # Limit to 5 children for readability
-                    _write_node(link, indent + 1, visited.copy())
-
-        # Start with the root (first URL added to the graph)
-        if self.graph:
-            root_url = next(iter(self.graph))
-            _write_node(root_url)
-
-    def _write_mermaid_diagram(self, file):
-        """Write a Mermaid.js compatible diagram of the crawled pages."""
-        def _node_id(url):
-            # Create a unique, safe node ID
-            return f"page_{hash(url) % 10000}"
-
-        def _short_label(url):
-            return url.replace('https://', '').replace('http://', '')[:20] + "..."
-
-        # Prevent duplicate nodes
-        written_nodes = set()
-        for url in self.graph:
-            node_id = _node_id(url)
-            if node_id not in written_nodes:
-                file.write(f'    {node_id}["{_short_label(url)}"]\n')
-                written_nodes.add(node_id)
-
-        # Prevent duplicate edges
-        written_edges = set()
-        for url, data in self.graph.items():
-            source_id = _node_id(url)
-            for link in list(data['links'])[:3]:
-                target_id = _node_id(link)
-                edge = f"{source_id}-->{target_id}"
-                if edge not in written_edges:
-                    file.write(f"    {edge}\n")
-                    written_edges.add(edge)

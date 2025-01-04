@@ -1,0 +1,17 @@
+{
+  "total_height": 871,
+  "total_width": 1200,
+  "viewport_height": 958,
+  "viewport_width": 1200,
+  "num_sections": 1,
+  "timestamp": "20250103_204753",
+  "url": "https://app.qbo.intuit.com/app/login?loadCustomerAssistanceAssets=us&product=qbOnlineAccountant",
+  "screenshots": [
+    {
+      "name": "section_1.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250103_204753_app.qbo.intuit.com_app_login?loadCustomerAssistanc/section_1.png",
+      "scroll_position": 0,
+      "viewport_height": 958
+    }
+  ]
+}

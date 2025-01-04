@@ -1,0 +1,83 @@
+{
+  "total_height": 11353,
+  "total_width": 1200,
+  "viewport_height": 958,
+  "viewport_width": 1200,
+  "num_sections": 12,
+  "timestamp": "20250103_202917",
+  "url": "https://quickbooks.intuit.com",
+  "screenshots": [
+    {
+      "name": "section_1.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250103_202917_quickbooks.intuit.com/section_1.png",
+      "scroll_position": 0,
+      "viewport_height": 958
+    },
+    {
+      "name": "section_2.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250103_202917_quickbooks.intuit.com/section_2.png",
+      "scroll_position": 958,
+      "viewport_height": 958
+    },
+    {
+      "name": "section_3.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250103_202917_quickbooks.intuit.com/section_3.png",
+      "scroll_position": 1916,
+      "viewport_height": 958
+    },
+    {
+      "name": "section_4.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250103_202917_quickbooks.intuit.com/section_4.png",
+      "scroll_position": 2874,
+      "viewport_height": 958
+    },
+    {
+      "name": "section_5.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250103_202917_quickbooks.intuit.com/section_5.png",
+      "scroll_position": 3832,
+      "viewport_height": 958
+    },
+    {
+      "name": "section_6.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250103_202917_quickbooks.intuit.com/section_6.png",
+      "scroll_position": 4790,
+      "viewport_height": 958
+    },
+    {
+      "name": "section_7.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250103_202917_quickbooks.intuit.com/section_7.png",
+      "scroll_position": 5748,
+      "viewport_height": 958
+    },
+    {
+      "name": "section_8.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250103_202917_quickbooks.intuit.com/section_8.png",
+      "scroll_position": 6706,
+      "viewport_height": 958
+    },
+    {
+      "name": "section_9.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250103_202917_quickbooks.intuit.com/section_9.png",
+      "scroll_position": 7664,
+      "viewport_height": 958
+    },
+    {
+      "name": "section_10.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250103_202917_quickbooks.intuit.com/section_10.png",
+      "scroll_position": 8622,
+      "viewport_height": 958
+    },
+    {
+      "name": "section_11.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250103_202917_quickbooks.intuit.com/section_11.png",
+      "scroll_position": 9580,
+      "viewport_height": 958
+    },
+    {
+      "name": "section_12.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250103_202917_quickbooks.intuit.com/section_12.png",
+      "scroll_position": 10538,
+      "viewport_height": 958
+    }
+  ]
+}
