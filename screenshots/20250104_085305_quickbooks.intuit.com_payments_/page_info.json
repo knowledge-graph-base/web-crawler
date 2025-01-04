@@ -1,0 +1,101 @@
+{
+  "total_height": 12539,
+  "total_width": 1200,
+  "viewport_height": 847,
+  "viewport_width": 1200,
+  "num_sections": 15,
+  "timestamp": "20250104_085305",
+  "url": "https://quickbooks.intuit.com/payments/",
+  "screenshots": [
+    {
+      "name": "section_1.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250104_085305_quickbooks.intuit.com_payments_/section_1.png",
+      "scroll_position": 0,
+      "viewport_height": 847
+    },
+    {
+      "name": "section_2.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250104_085305_quickbooks.intuit.com_payments_/section_2.png",
+      "scroll_position": 847,
+      "viewport_height": 847
+    },
+    {
+      "name": "section_3.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250104_085305_quickbooks.intuit.com_payments_/section_3.png",
+      "scroll_position": 1694,
+      "viewport_height": 847
+    },
+    {
+      "name": "section_4.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250104_085305_quickbooks.intuit.com_payments_/section_4.png",
+      "scroll_position": 2541,
+      "viewport_height": 847
+    },
+    {
+      "name": "section_5.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250104_085305_quickbooks.intuit.com_payments_/section_5.png",
+      "scroll_position": 3388,
+      "viewport_height": 847
+    },
+    {
+      "name": "section_6.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250104_085305_quickbooks.intuit.com_payments_/section_6.png",
+      "scroll_position": 4235,
+      "viewport_height": 847
+    },
+    {
+      "name": "section_7.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250104_085305_quickbooks.intuit.com_payments_/section_7.png",
+      "scroll_position": 5082,
+      "viewport_height": 847
+    },
+    {
+      "name": "section_8.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250104_085305_quickbooks.intuit.com_payments_/section_8.png",
+      "scroll_position": 5929,
+      "viewport_height": 847
+    },
+    {
+      "name": "section_9.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250104_085305_quickbooks.intuit.com_payments_/section_9.png",
+      "scroll_position": 6776,
+      "viewport_height": 847
+    },
+    {
+      "name": "section_10.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250104_085305_quickbooks.intuit.com_payments_/section_10.png",
+      "scroll_position": 7623,
+      "viewport_height": 847
+    },
+    {
+      "name": "section_11.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250104_085305_quickbooks.intuit.com_payments_/section_11.png",
+      "scroll_position": 8470,
+      "viewport_height": 847
+    },
+    {
+      "name": "section_12.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250104_085305_quickbooks.intuit.com_payments_/section_12.png",
+      "scroll_position": 9317,
+      "viewport_height": 847
+    },
+    {
+      "name": "section_13.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250104_085305_quickbooks.intuit.com_payments_/section_13.png",
+      "scroll_position": 10164,
+      "viewport_height": 847
+    },
+    {
+      "name": "section_14.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250104_085305_quickbooks.intuit.com_payments_/section_14.png",
+      "scroll_position": 11011,
+      "viewport_height": 847
+    },
+    {
+      "name": "section_15.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250104_085305_quickbooks.intuit.com_payments_/section_15.png",
+      "scroll_position": 11858,
+      "viewport_height": 847
+    }
+  ]
+}

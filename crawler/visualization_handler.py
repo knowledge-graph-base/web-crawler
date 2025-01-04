@@ -38,6 +38,29 @@ class CrawlVisualizer:
                 for i in range(dimensions['sections']):
                     f.write(f"- [Section {i + 1}]({screenshot_name}/section_{i + 1}.png)\n")
 
+            # Add elements information
+            if 'elements_data' in dimensions:
+                f.write("\n### Interactive Elements Summary\n")
+                elements_data = dimensions['elements_data']
+                
+                # Interactive elements
+                f.write("\n#### Interactive Elements\n")
+                for element_type, elements in elements_data['interactive_elements'].items():
+                    if elements:
+                        f.write(f"- {element_type.replace('_', ' ').title()}: {len(elements)}\n")
+
+                # Accessibility elements
+                f.write("\n#### Accessibility Elements\n")
+                for element_type, elements in elements_data['accessibility_elements'].items():
+                    if elements:
+                        f.write(f"- {element_type.replace('_', ' ').title()}: {len(elements)}\n")
+
+                # Forms
+                if elements_data['form_elements']:
+                    f.write(f"\n#### Forms: {len(elements_data['form_elements'])}\n")
+
+                f.write(f"\nDetailed elements configuration: `{dimensions['elements_config']}`\n")
+
     def log_error(self, url: str, error: str):
         """Log an error that occurred during crawling."""
         with open(self.log_file, "a", encoding="utf-8") as f:

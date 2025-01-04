@@ -14,13 +14,14 @@ class DOMActions:
         self.driver = driver
         self.timeout = timeout
         self.actions = ActionChains(driver)
-        
+
     def find_element(self, by: By, selector: str) -> Optional[WebElement]:
         """Safely find an element with wait."""
         try:
             element = WebDriverWait(self.driver, self.timeout).until(
                 EC.presence_of_element_located((by, selector))
             )
+            logging.info(f"Element found: {by}={selector}")
             return element
         except TimeoutException:
             logging.warning(f"Element not found: {by}={selector}")
@@ -32,6 +33,7 @@ class DOMActions:
             WebDriverWait(self.driver, self.timeout).until(
                 EC.element_to_be_clickable(element)
             ).click()
+            logging.info(f"Clicked element: {element}")
             return True
         except (TimeoutException, ElementNotInteractableException) as e:
             logging.warning(f"Could not click element: {e}")
@@ -41,6 +43,7 @@ class DOMActions:
         """Scroll element into view."""
         try:
             self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
+            logging.info(f"Scrolled to element: {element}")
             return True
         except Exception as e:
             logging.warning(f"Could not scroll to element: {e}")
@@ -50,6 +53,7 @@ class DOMActions:
         """Perform drag and drop operation."""
         try:
             self.actions.drag_and_drop(source, target).perform()
+            logging.info(f"Dragged {source} to {target}")
             return True
         except Exception as e:
             logging.warning(f"Could not perform drag and drop: {e}")
@@ -60,6 +64,7 @@ class DOMActions:
         try:
             element.clear()
             element.send_keys(text)
+            logging.info(f"Input text into element: {element}")
             return True
         except Exception as e:
             logging.warning(f"Could not input text: {e}")
@@ -69,6 +74,7 @@ class DOMActions:
         """Hover over an element."""
         try:
             self.actions.move_to_element(element).perform()
+            logging.info(f"Hovered over element: {element}")
             return True
         except Exception as e:
             logging.warning(f"Could not hover over element: {e}")
@@ -77,48 +83,57 @@ class DOMActions:
     def get_element_info(self, element: WebElement) -> Dict[str, Any]:
         """Get comprehensive information about an element."""
         try:
-            return {
+            info = {
                 "tag_name": element.tag_name,
                 "text": element.text,
                 "is_displayed": element.is_displayed(),
                 "is_enabled": element.is_enabled(),
-                "location": element.location,
-                "size": element.size,
-                "attributes": {
-                    "class": element.get_attribute("class"),
-                    "id": element.get_attribute("id"),
-                    "href": element.get_attribute("href"),
-                    "aria-label": element.get_attribute("aria-label"),
-                    "role": element.get_attribute("role")
-                }
+                "attributes": {}
             }
+            
+            # Safely get location and size
+            try:
+                info["location"] = element.location
+                info["size"] = element.size
+            except Exception as e:
+                logging.debug(f"Could not get location/size: {e}")
+                info["location"] = {"x": 0, "y": 0}
+                info["size"] = {"width": 0, "height": 0}
+
+            # Safely get attributes
+            for attr in ["class", "id", "href", "aria-label", "role"]:
+                try:
+                    value = element.get_attribute(attr)
+                    if value:
+                        info["attributes"][attr] = value
+                except Exception:
+                    continue
+
+            return info
         except Exception as e:
             logging.warning(f"Could not get element info: {e}")
-            return {}
+            return {
+                "error": str(e),
+                "location": {"x": 0, "y": 0},
+                "size": {"width": 0, "height": 0}
+            }
 
     def scroll_through_page(self) -> None:
         """Scroll through the entire page to load all dynamic content."""
         try:
-            # Get initial height
             last_height = self.driver.execute_script("return document.body.scrollHeight")
             
             while True:
-                # Scroll to bottom
                 self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-                
-                # Wait for potential dynamic content to load
                 time.sleep(2)
                 
-                # Calculate new scroll height
                 new_height = self.driver.execute_script("return document.body.scrollHeight")
                 
-                # Break if no more scrolling is possible
                 if new_height == last_height:
                     break
                     
                 last_height = new_height
                 
-            # Scroll back to top
             self.driver.execute_script("window.scrollTo(0, 0);")
             
         except Exception as e:

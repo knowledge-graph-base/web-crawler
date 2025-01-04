@@ -3,6 +3,7 @@
 import sys
 import os
 import time
+import logging
 
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
@@ -12,7 +13,19 @@ from selenium.webdriver.chrome.options import Options
 from bfs_crawler import BFSCrawler
 from utils import manual_decision_prompt
 # https://news.ycombinator.com
+def setup_logging():
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S'
+    )
+    
+    # Reduce logging noise from selenium
+    # logging.getLogger('selenium').setLevel(logging.WARNING)
+    # logging.getLogger('urllib3').setLevel(logging.WARNING)
+
 def main():
+    setup_logging()
     # Parse URL from command line or default
     if len(sys.argv) > 1:
         start_url = sys.argv[1]
@@ -21,7 +34,7 @@ def main():
 
     # Setup Selenium for headless Chrome
     chrome_options = Options()
-    # chrome_options.add_argument("--headless")  # run in headless mode
+    chrome_options.add_argument("--headless")  # run in headless mode
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--disable-blink-features=AutomationControlled")
