@@ -1,0 +1,390 @@
+{
+  "total_height": 3358,
+  "total_width": 1200,
+  "viewport_height": 1318,
+  "viewport_width": 1200,
+  "num_sections": 3,
+  "timestamp": "20250105_111149",
+  "url": "https://placem8.com/",
+  "screenshots": [
+    {
+      "name": "section_1.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250105_111149_placem8.com_/section_1.png",
+      "scroll_position": 0,
+      "viewport_height": 1318
+    },
+    {
+      "name": "section_2.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250105_111149_placem8.com_/section_2.png",
+      "scroll_position": 1318,
+      "viewport_height": 1318
+    },
+    {
+      "name": "section_3.png",
+      "path": "/Users/sanchitmonga/Downloads/Projects/web-crawler/crawler/../screenshots/20250105_111149_placem8.com_/section_3.png",
+      "scroll_position": 2636,
+      "viewport_height": 1318
+    }
+  ],
+  "interactive_elements": [
+    {
+      "element_id": "buttons_1",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "text": "Explore",
+      "location": {
+        "x": 461,
+        "y": 20,
+        "width": 53,
+        "height": 24
+      },
+      "attributes": {
+        "class": "text-text hover:text-primary transition-colors",
+        "type": "submit"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "buttons_2",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "text": "Early Access",
+      "location": {
+        "x": 893,
+        "y": 12,
+        "width": 139,
+        "height": 40
+      },
+      "attributes": {
+        "class": "bg-primary text-text px-4 md:px-6 py-2 rounded-full hover:bg-primary/90 transition-colors text-sm md:text-base",
+        "type": "submit"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "buttons_3",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "text": "Join Waitlist",
+      "location": {
+        "x": 811,
+        "y": 3165,
+        "width": 136,
+        "height": 40
+      },
+      "attributes": {
+        "class": "inline-block px-6 py-2 bg-primary text-text rounded-lg hover:bg-primary/90 transition duration-300",
+        "type": "submit"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 3,
+        "end_section": 3,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "links_4",
+      "element_type": "links",
+      "tag_name": "a",
+      "text": "",
+      "location": {
+        "x": 168,
+        "y": 16,
+        "width": 122,
+        "height": 32
+      },
+      "attributes": {
+        "class": "flex items-center space-x-2",
+        "href": "https://placem8.com/"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "links_5",
+      "element_type": "links",
+      "tag_name": "a",
+      "text": "About Us",
+      "location": {
+        "x": 546,
+        "y": 20,
+        "width": 65,
+        "height": 24
+      },
+      "attributes": {
+        "class": "text-text hover:text-primary transition-colors",
+        "href": "https://placem8.com/about"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "links_6",
+      "element_type": "links",
+      "tag_name": "a",
+      "text": "Contact Us",
+      "location": {
+        "x": 643,
+        "y": 20,
+        "width": 78,
+        "height": 24
+      },
+      "attributes": {
+        "class": "text-text hover:text-primary transition-colors",
+        "href": "https://placem8.com/contact"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "links_7",
+      "element_type": "links",
+      "tag_name": "a",
+      "text": "",
+      "location": {
+        "x": 421,
+        "y": 2389,
+        "width": 165,
+        "height": 60
+      },
+      "attributes": {
+        "class": "hover:opacity-80 transition-opacity",
+        "href": "https://appdistribution.firebase.dev/i/f138719f6260dcad"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 2,
+        "end_section": 2,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "links_8",
+      "element_type": "links",
+      "tag_name": "a",
+      "text": "",
+      "location": {
+        "x": 601,
+        "y": 2389,
+        "width": 178,
+        "height": 60
+      },
+      "attributes": {
+        "class": "hover:opacity-80 transition-opacity",
+        "href": "https://appdistribution.firebase.dev/i/d5ebabceef3db030"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 2,
+        "end_section": 2,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "links_9",
+      "element_type": "links",
+      "tag_name": "a",
+      "text": "About Us",
+      "location": {
+        "x": 32,
+        "y": 3079,
+        "width": 65,
+        "height": 19
+      },
+      "attributes": {
+        "class": "text-text hover:text-primary transition",
+        "href": "https://placem8.com/about"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 3,
+        "end_section": 3,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "links_10",
+      "element_type": "links",
+      "tag_name": "a",
+      "text": "Contact Us",
+      "location": {
+        "x": 32,
+        "y": 3111,
+        "width": 78,
+        "height": 19
+      },
+      "attributes": {
+        "class": "text-text hover:text-primary transition",
+        "href": "https://placem8.com/contact"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 3,
+        "end_section": 3,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "links_11",
+      "element_type": "links",
+      "tag_name": "a",
+      "text": "Privacy",
+      "location": {
+        "x": 32,
+        "y": 3143,
+        "width": 52,
+        "height": 19
+      },
+      "attributes": {
+        "class": "text-text hover:text-primary transition",
+        "href": "https://placem8.com/privacy"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 3,
+        "end_section": 3,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "links_12",
+      "element_type": "links",
+      "tag_name": "a",
+      "text": "Terms of Service",
+      "location": {
+        "x": 32,
+        "y": 3175,
+        "width": 120,
+        "height": 19
+      },
+      "attributes": {
+        "class": "text-text hover:text-primary transition",
+        "href": "https://placem8.com/terms"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 3,
+        "end_section": 3,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "links_13",
+      "element_type": "links",
+      "tag_name": "a",
+      "text": "Twitter",
+      "location": {
+        "x": 421,
+        "y": 3079,
+        "width": 49,
+        "height": 19
+      },
+      "attributes": {
+        "class": "text-text hover:text-primary transition",
+        "href": "https://x.com/placem8"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 3,
+        "end_section": 3,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "links_14",
+      "element_type": "links",
+      "tag_name": "a",
+      "text": "Instagram",
+      "location": {
+        "x": 421,
+        "y": 3111,
+        "width": 72,
+        "height": 19
+      },
+      "attributes": {
+        "class": "text-text hover:text-primary transition",
+        "href": "https://www.instagram.com/place_m8/"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 3,
+        "end_section": 3,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "navigation_15",
+      "element_type": "navigation",
+      "tag_name": "nav",
+      "text": "Explore\nAbout Us\nContact Us\nEarly Access",
+      "location": {
+        "x": 0,
+        "y": 0,
+        "width": 1200,
+        "height": 65
+      },
+      "attributes": {
+        "class": "sticky top-0 z-50 bg-background backdrop-blur-md border-b border-surfaceVariant"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "scroll_top": 0,
+  "viewport_height": 1318,
+  "viewport_width": 1200,
+  "section_number": 1,
+  "interactive_elements": [
+    {
+      "element_id": "buttons_1",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "text": "Explore",
+      "location": {
+        "x": 461,
+        "y": 20,
+        "width": 53,
+        "height": 24
+      },
+      "attributes": {
+        "class": "text-text hover:text-primary transition-colors",
+        "type": "submit"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "buttons_2",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "text": "Early Access",
+      "location": {
+        "x": 893,
+        "y": 12,
+        "width": 139,
+        "height": 40
+      },
+      "attributes": {
+        "class": "bg-primary text-text px-4 md:px-6 py-2 rounded-full hover:bg-primary/90 transition-colors text-sm md:text-base",
+        "type": "submit"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "links_4",
+      "element_type": "links",
+      "tag_name": "a",
+      "text": "",
+      "location": {
+        "x": 168,
+        "y": 16,
+        "width": 122,
+        "height": 32
+      },
+      "attributes": {
+        "class": "flex items-center space-x-2",
+        "href": "https://placem8.com/"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "links_5",
+      "element_type": "links",
+      "tag_name": "a",
+      "text": "About Us",
+      "location": {
+        "x": 546,
+        "y": 20,
+        "width": 65,
+        "height": 24
+      },
+      "attributes": {
+        "class": "text-text hover:text-primary transition-colors",
+        "href": "https://placem8.com/about"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "links_6",
+      "element_type": "links",
+      "tag_name": "a",
+      "text": "Contact Us",
+      "location": {
+        "x": 643,
+        "y": 20,
+        "width": 78,
+        "height": 24
+      },
+      "attributes": {
+        "class": "text-text hover:text-primary transition-colors",
+        "href": "https://placem8.com/contact"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "navigation_15",
+      "element_type": "navigation",
+      "tag_name": "nav",
+      "text": "Explore\nAbout Us\nContact Us\nEarly Access",
+      "location": {
+        "x": 0,
+        "y": 0,
+        "width": 1200,
+        "height": 65
+      },
+      "attributes": {
+        "class": "sticky top-0 z-50 bg-background backdrop-blur-md border-b border-surfaceVariant"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      }
+    }
+  ]
+}

@@ -3,6 +3,7 @@ import json
 import os
 from selenium.webdriver.remote.webelement import WebElement
 import logging
+from crawler.dom_actions import InteractiveElement, ScreenshotSection
 
 class ElementTracker:
     def __init__(self, base_dir: str):
@@ -10,49 +11,59 @@ class ElementTracker:
         self.config_dir = os.path.join(base_dir, "configs")
         os.makedirs(self.config_dir, exist_ok=True)
 
-    def save_page_elements(self, dom_actions, page_timestamp: str, url: str, 
-                         viewport_info: Dict[str, Any] = None) -> Dict[str, Any]:
-        """
-        Save comprehensive data about page elements to a config file.
-        Uses DOMActions to get element information.
-        """
+    def update_screenshot_sections(self, elements: List[InteractiveElement], viewport_height: int) -> List[InteractiveElement]:
+        """Update screenshot section information for each element based on its position."""
+        for element in elements:
+            # Calculate which sections this element appears in
+            element_top = element.location.y
+            element_bottom = element_top + element.location.height
+            
+            # Calculate section numbers (1-based)
+            start_section = max(1, int(element_top // viewport_height) + 1)
+            end_section = max(1, int(element_bottom // viewport_height) + 1)
+            
+            # Update the element's screenshot section
+            element.screenshot_section = ScreenshotSection(
+                start_section=start_section,
+                end_section=end_section,
+                spans_sections=start_section != end_section
+            )
+        
+        return elements
+
+    def save_page_elements(self, dom_actions, page_timestamp: str, url: str, viewport_info: Dict[str, Any]) -> Dict[str, Any]:
+        """Save comprehensive data about page elements to a config file."""
         try:
-            # Get all elements using DOMActions
+            # Get all elements using DOMActions (now returns InteractiveElement objects)
             interactive_elements = dom_actions.find_interactive_elements()
             
-            # Process and structure the elements data
+            # Update screenshot sections for all elements
+            for element_type, elements in interactive_elements.items():
+                interactive_elements[element_type] = self.update_screenshot_sections(
+                    elements, 
+                    viewport_info['viewport_height']
+                )
+            
+            # Create elements data structure
             elements_data = {
                 'url': url,
                 'timestamp': page_timestamp,
-                'viewport_info': viewport_info or {},
-                'elements': {}
+                'viewport_info': viewport_info,
+                'elements': {
+                    element_type: [element.to_dict() for element in elements]
+                    for element_type, elements in interactive_elements.items()
+                }
             }
-
-            # Process each type of element
-            for element_type, elements in interactive_elements.items():
-                try:
-                    elements_data['elements'][element_type] = [
-                        self._process_element_data(element, dom_actions)
-                        for element in elements
-                    ]
-                except Exception as e:
-                    logging.warning(f"Error processing {element_type} elements: {str(e)}")
-                    elements_data['elements'][element_type] = []
-
-            # Add section information
-            if viewport_info and 'viewport_height' in viewport_info:
-                self._add_section_information(elements_data, viewport_info['viewport_height'])
 
             # Save to config file
             config_path = os.path.join(self.config_dir, f"{page_timestamp}_elements.json")
             with open(config_path, 'w', encoding='utf-8') as f:
-                json.dump(elements_data, f, indent=2, ensure_ascii=False)
-            logging.info(f"Saved elements configuration to {config_path}")
+                json.dump(elements_data, f, indent=2)
 
             return elements_data
 
         except Exception as e:
-            logging.warning(f"Error saving page elements: {str(e)}")
+            logging.error(f"Error saving page elements: {e}")
             return {
                 'url': url,
                 'timestamp': page_timestamp,
