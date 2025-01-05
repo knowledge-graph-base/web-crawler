@@ -2,7 +2,7 @@ from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Set
 from datetime import datetime
 from .page import Page
-from .actions import Action
+from .actions import Action, PageState
 
 @dataclass
 class Edge:
@@ -20,33 +20,6 @@ class Edge:
             'weight': self.weight,
             'transition_time': self.transition_time
         }
-
-@dataclass
-class PageState:
-    state_id: str
-    page_id: str
-    timestamp: datetime
-    form_values: Dict[str, str]
-    scroll_position: int
-    action_history: List[Action] = field(default_factory=list)
-    dom_changes: Dict[str, str] = field(default_factory=dict)  # Track DOM changes
-    
-    def to_dict(self) -> Dict:
-        return {
-            'state_id': self.state_id,
-            'page_id': self.page_id,
-            'timestamp': self.timestamp.isoformat(),
-            'form_values': self.form_values,
-            'scroll_position': self.scroll_position,
-            'action_history': [action.to_dict() for action in self.action_history],
-            'dom_changes': self.dom_changes
-        }
-    
-    def add_action(self, action: Action):
-        self.action_history.append(action)
-    
-    def get_last_action(self) -> Optional[Action]:
-        return self.action_history[-1] if self.action_history else None
 
 @dataclass
 class CrawlGraph:

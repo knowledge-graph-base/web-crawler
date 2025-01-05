@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Optional
-from ..domain.actions import ActionDecision
-from ..domain.graph import PageState
+from ..domain.actions import ActionDecision, PageState
 
 class BaseDecisionMaker(ABC):
     @abstractmethod
@@ -11,5 +10,5 @@ class BaseDecisionMaker(ABC):
 
     @abstractmethod
     def should_continue_exploration(self, state: PageState) -> bool:
-        """Decide whether to continue exploring the current page"""
+        """Decide whether to continue exploring from the current state"""
         pass 

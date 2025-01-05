@@ -12,9 +12,9 @@ from .dom_actions import DOMActions
 from selenium.webdriver.common.by import By
 from .element_tracker import ElementTracker
 from .screenshot_handler import ScreenshotHandler
-from .domain.graph import CrawlGraph, Edge, Action, PageState
+from .domain.graph import CrawlGraph, Edge
 from .domain.page import Page, PageMetadata
-from .domain.actions import ActionDecision, ClickAction, HoverAction, InputAction, NavigateAction, ScrollAction  
+from .domain.actions import Action, ActionDecision, ClickAction, HoverAction, InputAction, NavigateAction, ScrollAction, PageState
 from .repository.json_repository import JsonRepository
 from .decision_maker.base_decision_maker import BaseDecisionMaker
 
