@@ -1,0 +1,290 @@
+{
+  "buttons": [
+    {
+      "element_id": "buttons_1",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "text": "Features",
+      "location": {
+        "x": 1096,
+        "y": 22,
+        "width": 89,
+        "height": 37
+      },
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      },
+      "attributes": {
+        "class": "plain-button",
+        "type": "submit"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "parent_form_id": null,
+      "timestamp": "2025-01-05T11:14:23.774675"
+    },
+    {
+      "element_id": "buttons_2",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "text": "Blog",
+      "location": {
+        "x": 1198,
+        "y": 22,
+        "width": 62,
+        "height": 37
+      },
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      },
+      "attributes": {
+        "class": "plain-button",
+        "type": "submit"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "parent_form_id": null,
+      "timestamp": "2025-01-05T11:14:24.501601"
+    },
+    {
+      "element_id": "buttons_3",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "text": "Log In",
+      "location": {
+        "x": 1271,
+        "y": 22,
+        "width": 73,
+        "height": 37
+      },
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      },
+      "attributes": {
+        "class": "plain-button",
+        "type": "submit"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "parent_form_id": null,
+      "timestamp": "2025-01-05T11:14:24.613276"
+    },
+    {
+      "element_id": "buttons_4",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "text": "Get Started",
+      "location": {
+        "x": 1356,
+        "y": 20,
+        "width": 120,
+        "height": 40
+      },
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      },
+      "attributes": {
+        "class": "bold-button-white",
+        "type": "submit"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "parent_form_id": null,
+      "timestamp": "2025-01-05T11:14:24.830517"
+    },
+    {
+      "element_id": "buttons_5",
+      "element_type": "buttons",
+      "tag_name": "div",
+      "text": "Start Interviewing\nHire Candidates",
+      "location": {
+        "x": 560,
+        "y": 524,
+        "width": 600,
+        "height": 42
+      },
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      },
+      "attributes": {
+        "class": "buttons"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "parent_form_id": null,
+      "timestamp": "2025-01-05T11:14:26.873701"
+    },
+    {
+      "element_id": "buttons_6",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "text": "Start Interviewing",
+      "location": {
+        "x": 690,
+        "y": 524,
+        "width": 170,
+        "height": 42
+      },
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      },
+      "attributes": {
+        "class": "bold-button-white",
+        "type": "submit"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "parent_form_id": null,
+      "timestamp": "2025-01-05T11:14:27.248049"
+    },
+    {
+      "element_id": "buttons_7",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "text": "Hire Candidates",
+      "location": {
+        "x": 872,
+        "y": 524,
+        "width": 157,
+        "height": 42
+      },
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      },
+      "attributes": {
+        "class": "bold-button-black",
+        "type": "submit"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "parent_form_id": null,
+      "timestamp": "2025-01-05T11:14:27.387084"
+    }
+  ],
+  "links": [
+    {
+      "element_id": "links_8",
+      "element_type": "links",
+      "tag_name": "a",
+      "text": "Read on LinkedIn",
+      "location": {
+        "x": 309,
+        "y": 2379,
+        "width": 318,
+        "height": 40
+      },
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      },
+      "attributes": {
+        "class": "read-more",
+        "href": "https://www.linkedin.com/feed/update/urn:li:activity:7260340663894913025/"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "parent_form_id": null,
+      "timestamp": "2025-01-05T11:14:27.615032"
+    },
+    {
+      "element_id": "links_9",
+      "element_type": "links",
+      "tag_name": "a",
+      "text": "Read on LinkedIn",
+      "location": {
+        "x": 701,
+        "y": 2379,
+        "width": 318,
+        "height": 40
+      },
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      },
+      "attributes": {
+        "class": "read-more",
+        "href": "https://www.linkedin.com/feed/update/urn:li:activity:7269383520379121664/"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "parent_form_id": null,
+      "timestamp": "2025-01-05T11:14:27.722235"
+    },
+    {
+      "element_id": "links_10",
+      "element_type": "links",
+      "tag_name": "a",
+      "text": "Read on LinkedIn",
+      "location": {
+        "x": 1093,
+        "y": 2379,
+        "width": 318,
+        "height": 40
+      },
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      },
+      "attributes": {
+        "class": "read-more",
+        "href": "https://www.linkedin.com/feed/update/urn:li:activity:7270118255250272257"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "parent_form_id": null,
+      "timestamp": "2025-01-05T11:14:27.806703"
+    }
+  ],
+  "media": [
+    {
+      "element_id": "media_11",
+      "element_type": "media",
+      "tag_name": "video",
+      "text": "Your browser does not support the video tag.",
+      "location": {
+        "x": 474,
+        "y": 700,
+        "width": 772,
+        "height": 434
+      },
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      },
+      "attributes": {},
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "parent_form_id": null,
+      "timestamp": "2025-01-05T11:15:08.503938"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "scroll_top": 1361,
+  "viewport_height": 1361,
+  "viewport_width": 1720,
+  "section_number": 2,
+  "interactive_elements": [
+    {
+      "element_id": "links_8",
+      "element_type": "links",
+      "tag_name": "a",
+      "text": "Read on LinkedIn",
+      "location": {
+        "x": 309,
+        "y": 2379,
+        "width": 318,
+        "height": 40
+      },
+      "attributes": {
+        "class": "read-more",
+        "href": "https://www.linkedin.com/feed/update/urn:li:activity:7260340663894913025/"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 2,
+        "end_section": 2,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "links_9",
+      "element_type": "links",
+      "tag_name": "a",
+      "text": "Read on LinkedIn",
+      "location": {
+        "x": 701,
+        "y": 2379,
+        "width": 318,
+        "height": 40
+      },
+      "attributes": {
+        "class": "read-more",
+        "href": "https://www.linkedin.com/feed/update/urn:li:activity:7269383520379121664/"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 2,
+        "end_section": 2,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "links_10",
+      "element_type": "links",
+      "tag_name": "a",
+      "text": "Read on LinkedIn",
+      "location": {
+        "x": 1093,
+        "y": 2379,
+        "width": 318,
+        "height": 40
+      },
+      "attributes": {
+        "class": "read-more",
+        "href": "https://www.linkedin.com/feed/update/urn:li:activity:7270118255250272257"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 2,
+        "end_section": 2,
+        "spans_sections": false
+      }
+    }
+  ]
+}

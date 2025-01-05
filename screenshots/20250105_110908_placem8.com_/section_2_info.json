@@ -1,0 +1,56 @@
+{
+  "scroll_top": 1318,
+  "viewport_height": 1318,
+  "viewport_width": 1200,
+  "section_number": 2,
+  "interactive_elements": [
+    {
+      "element_id": "links_7",
+      "element_type": "links",
+      "tag_name": "a",
+      "text": "",
+      "location": {
+        "x": 421,
+        "y": 2389,
+        "width": 165,
+        "height": 60
+      },
+      "attributes": {
+        "class": "hover:opacity-80 transition-opacity",
+        "href": "https://appdistribution.firebase.dev/i/f138719f6260dcad"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 2,
+        "end_section": 2,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "links_8",
+      "element_type": "links",
+      "tag_name": "a",
+      "text": "",
+      "location": {
+        "x": 601,
+        "y": 2389,
+        "width": 178,
+        "height": 60
+      },
+      "attributes": {
+        "class": "hover:opacity-80 transition-opacity",
+        "href": "https://appdistribution.firebase.dev/i/d5ebabceef3db030"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 2,
+        "end_section": 2,
+        "spans_sections": false
+      }
+    }
+  ]
+}

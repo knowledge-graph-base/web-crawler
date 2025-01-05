@@ -1,0 +1,176 @@
+{
+  "scroll_top": 2636,
+  "viewport_height": 1318,
+  "viewport_width": 1200,
+  "section_number": 3,
+  "interactive_elements": [
+    {
+      "element_id": "buttons_3",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "text": "Join Waitlist",
+      "location": {
+        "x": 811,
+        "y": 3165,
+        "width": 136,
+        "height": 40
+      },
+      "attributes": {
+        "class": "inline-block px-6 py-2 bg-primary text-text rounded-lg hover:bg-primary/90 transition duration-300",
+        "type": "submit"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 3,
+        "end_section": 3,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "links_9",
+      "element_type": "links",
+      "tag_name": "a",
+      "text": "About Us",
+      "location": {
+        "x": 32,
+        "y": 3079,
+        "width": 65,
+        "height": 19
+      },
+      "attributes": {
+        "class": "text-text hover:text-primary transition",
+        "href": "https://placem8.com/about"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 3,
+        "end_section": 3,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "links_10",
+      "element_type": "links",
+      "tag_name": "a",
+      "text": "Contact Us",
+      "location": {
+        "x": 32,
+        "y": 3111,
+        "width": 78,
+        "height": 19
+      },
+      "attributes": {
+        "class": "text-text hover:text-primary transition",
+        "href": "https://placem8.com/contact"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 3,
+        "end_section": 3,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "links_11",
+      "element_type": "links",
+      "tag_name": "a",
+      "text": "Privacy",
+      "location": {
+        "x": 32,
+        "y": 3143,
+        "width": 52,
+        "height": 19
+      },
+      "attributes": {
+        "class": "text-text hover:text-primary transition",
+        "href": "https://placem8.com/privacy"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 3,
+        "end_section": 3,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "links_12",
+      "element_type": "links",
+      "tag_name": "a",
+      "text": "Terms of Service",
+      "location": {
+        "x": 32,
+        "y": 3175,
+        "width": 120,
+        "height": 19
+      },
+      "attributes": {
+        "class": "text-text hover:text-primary transition",
+        "href": "https://placem8.com/terms"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 3,
+        "end_section": 3,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "links_13",
+      "element_type": "links",
+      "tag_name": "a",
+      "text": "Twitter",
+      "location": {
+        "x": 421,
+        "y": 3079,
+        "width": 49,
+        "height": 19
+      },
+      "attributes": {
+        "class": "text-text hover:text-primary transition",
+        "href": "https://x.com/placem8"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 3,
+        "end_section": 3,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "links_14",
+      "element_type": "links",
+      "tag_name": "a",
+      "text": "Instagram",
+      "location": {
+        "x": 421,
+        "y": 3111,
+        "width": 72,
+        "height": 19
+      },
+      "attributes": {
+        "class": "text-text hover:text-primary transition",
+        "href": "https://www.instagram.com/place_m8/"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 3,
+        "end_section": 3,
+        "spans_sections": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,316 @@
+{
+  "scroll_top": 0,
+  "viewport_height": 1361,
+  "viewport_width": 1720,
+  "section_number": 1,
+  "interactive_elements": [
+    {
+      "element_id": "buttons_1",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "text": "",
+      "location": {
+        "x": 630,
+        "y": 269,
+        "width": 40,
+        "height": 40
+      },
+      "attributes": {
+        "class": "chakra-button css-1xpkrx3",
+        "type": "button"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "buttons_2",
+      "element_type": "buttons",
+      "tag_name": "span",
+      "text": "",
+      "location": {
+        "x": 634,
+        "y": 277,
+        "width": 24,
+        "height": 24
+      },
+      "attributes": {
+        "class": "chakra-button__icon css-1wh2kri"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "buttons_3",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "text": "",
+      "location": {
+        "x": 1031,
+        "y": 557,
+        "width": 38,
+        "height": 28
+      },
+      "attributes": {
+        "class": "chakra-button css-18gj23d",
+        "type": "button"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "buttons_4",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "text": "Forgot Password?",
+      "location": {
+        "x": 953,
+        "y": 603,
+        "width": 121,
+        "height": 17
+      },
+      "attributes": {
+        "class": "chakra-button css-lyckmr",
+        "type": "button"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "buttons_5",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "text": "Sign In",
+      "location": {
+        "x": 646,
+        "y": 647,
+        "width": 428,
+        "height": 56
+      },
+      "attributes": {
+        "class": "chakra-button css-f5kkth",
+        "type": "button"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "buttons_6",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "text": "Continue with Google",
+      "location": {
+        "x": 646,
+        "y": 752,
+        "width": 428,
+        "height": 48
+      },
+      "attributes": {
+        "class": "chakra-button css-k6g4u2",
+        "type": "button"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "buttons_7",
+      "element_type": "buttons",
+      "tag_name": "span",
+      "text": "",
+      "location": {
+        "x": 753,
+        "y": 767,
+        "width": 18,
+        "height": 18
+      },
+      "attributes": {
+        "class": "chakra-button__icon css-1wh2kri"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "buttons_8",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "text": "Continue with GitHub",
+      "location": {
+        "x": 646,
+        "y": 824,
+        "width": 428,
+        "height": 48
+      },
+      "attributes": {
+        "class": "chakra-button css-sjm6n8",
+        "type": "button"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "buttons_9",
+      "element_type": "buttons",
+      "tag_name": "span",
+      "text": "",
+      "location": {
+        "x": 754,
+        "y": 839,
+        "width": 18,
+        "height": 18
+      },
+      "attributes": {
+        "class": "chakra-button__icon css-1wh2kri"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "buttons_10",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "text": "Continue with LinkedIn",
+      "location": {
+        "x": 646,
+        "y": 896,
+        "width": 428,
+        "height": 48
+      },
+      "attributes": {
+        "class": "chakra-button css-1jpkvtb",
+        "type": "button"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "buttons_11",
+      "element_type": "buttons",
+      "tag_name": "span",
+      "text": "",
+      "location": {
+        "x": 748,
+        "y": 911,
+        "width": 18,
+        "height": 18
+      },
+      "attributes": {
+        "class": "chakra-button__icon css-1wh2kri"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "buttons_12",
+      "element_type": "buttons",
+      "tag_name": "button",
+      "text": "Sign Up",
+      "location": {
+        "x": 910,
+        "y": 968,
+        "width": 60,
+        "height": 20
+      },
+      "attributes": {
+        "class": "chakra-button css-1ppasoh",
+        "type": "button"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": false,
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      }
+    },
+    {
+      "element_id": "text_inputs_13",
+      "element_type": "text_inputs",
+      "tag_name": "input",
+      "text": "",
+      "location": {
+        "x": 646,
+        "y": 547,
+        "width": 428,
+        "height": 48
+      },
+      "attributes": {
+        "class": "chakra-input css-30zfl5",
+        "type": "password"
+      },
+      "is_enabled": true,
+      "is_displayed": true,
+      "has_input_field": true,
+      "screenshot_section": {
+        "start_section": 1,
+        "end_section": 1,
+        "spans_sections": false
+      }
+    }
+  ]
+}
