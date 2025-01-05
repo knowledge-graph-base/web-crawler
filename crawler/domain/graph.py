@@ -2,78 +2,24 @@ from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Set
 from datetime import datetime
 from .page import Page
-from .decisions import ActionType, ActionDecision, ClickAction, HoverAction, InputAction, NavigateAction, ScrollAction
+from .actions import Action
 
 @dataclass
-class Action:
-    action_id: str
-    action_type: ActionType
-    element_id: str
-    timestamp: datetime
-    duration: float
-    success: bool
-    input_value: Optional[str] = None  # For input actions
-    scroll_position: Optional[int] = None  # For scroll actions
-    url: Optional[str] = None  # For navigate actions
-    error_message: Optional[str] = None
+class Edge:
+    source_state_id: str
+    target_state_id: str
+    action: Action
+    weight: float
+    transition_time: float  # Time taken for state transition
     
     def to_dict(self) -> Dict:
         return {
-            'action_id': self.action_id,
-            'action_type': self.action_type.value,
-            'element_id': self.element_id,
-            'timestamp': self.timestamp.isoformat(),
-            'duration': self.duration,
-            'success': self.success,
-            'input_value': self.input_value,
-            'scroll_position': self.scroll_position,
-            'url': self.url,
-            'error_message': self.error_message
+            'source_state_id': self.source_state_id,
+            'target_state_id': self.target_state_id,
+            'action': self.action.to_dict(),
+            'weight': self.weight,
+            'transition_time': self.transition_time
         }
-    
-    @classmethod
-    def from_decision(cls, action_id: str, decision: ActionDecision, duration: float, success: bool) -> 'Action':
-        """Create an Action from an ActionDecision"""
-        common_args = {
-            'action_id': action_id,
-            'timestamp': datetime.now(),
-            'duration': duration,
-            'success': success
-        }
-        
-        if isinstance(decision, InputAction):
-            return cls(
-                action_type=ActionType.INPUT,
-                element_id=decision.element_id,
-                input_value=decision.input_value,
-                **common_args
-            )
-        elif isinstance(decision, ClickAction):
-            return cls(
-                action_type=ActionType.CLICK,
-                element_id=decision.element_id,
-                **common_args
-            )
-        elif isinstance(decision, HoverAction):
-            return cls(
-                action_type=ActionType.HOVER,
-                element_id=decision.element_id,
-                **common_args
-            )
-        elif isinstance(decision, ScrollAction):
-            return cls(
-                action_type=ActionType.SCROLL,
-                scroll_position=decision.position,
-                **common_args
-            )
-        elif isinstance(decision, NavigateAction):
-            return cls(
-                action_type=ActionType.NAVIGATE,
-                url=decision.url,
-                **common_args
-            )
-        else:
-            raise ValueError(f"Unsupported action decision type: {type(decision)}")
 
 @dataclass
 class PageState:
@@ -101,23 +47,6 @@ class PageState:
     
     def get_last_action(self) -> Optional[Action]:
         return self.action_history[-1] if self.action_history else None
-
-@dataclass
-class Edge:
-    source_state_id: str
-    target_state_id: str
-    action: Action
-    weight: float
-    transition_time: float  # Time taken for state transition
-    
-    def to_dict(self) -> Dict:
-        return {
-            'source_state_id': self.source_state_id,
-            'target_state_id': self.target_state_id,
-            'action': self.action.to_dict(),
-            'weight': self.weight,
-            'transition_time': self.transition_time
-        }
 
 @dataclass
 class CrawlGraph:

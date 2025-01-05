@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
-from typing import List, Optional
-from ..domain.decisions import ActionDecision, PageState
+from typing import Optional
+from ..domain.actions import ActionDecision
+from ..domain.graph import PageState
 
 class BaseDecisionMaker(ABC):
     @abstractmethod

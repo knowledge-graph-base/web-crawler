@@ -1,9 +1,7 @@
 from typing import List, Optional
 from .base_decision_maker import BaseDecisionMaker
-from ..domain.decisions import (
-    ActionDecision, PageState, InputAction, ClickAction, 
-    HoverAction, ScrollAction, NavigateAction
-)
+from ..domain.actions import ActionDecision, InputAction, ClickAction, HoverAction, ScrollAction, NavigateAction
+from ..domain.graph import PageState
 
 class HumanDecisionMaker(BaseDecisionMaker):
     def decide_next_action(self, state: PageState) -> Optional[ActionDecision]:

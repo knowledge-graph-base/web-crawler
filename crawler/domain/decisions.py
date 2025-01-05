@@ -1,39 +1,8 @@
 from dataclasses import dataclass, field
 from typing import List, Optional, Union, Dict
-from enum import Enum
 from datetime import datetime
 
-from crawler.domain.graph import Action
-
-class ActionType(Enum):
-    CLICK = "click"
-    INPUT = "input"
-    HOVER = "hover"
-    SCROLL = "scroll"
-    NAVIGATE = "navigate"
-
-@dataclass
-class InputAction:
-    element_id: str
-    input_value: str
-
-@dataclass
-class ClickAction:
-    element_id: str
-
-@dataclass
-class HoverAction:
-    element_id: str
-
-@dataclass
-class ScrollAction:
-    position: int  # Scroll position in pixels
-
-@dataclass
-class NavigateAction:
-    url: str
-
-ActionDecision = Union[InputAction, ClickAction, HoverAction, ScrollAction, NavigateAction]
+from .actions import Action, ActionType
 
 @dataclass
 class PageState:
